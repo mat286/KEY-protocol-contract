@@ -90,6 +90,12 @@
 						"internalType": "uint256",
 						"name": "issuedAt",
 						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "mensaje",
+						"type": "string"
 					}
 				],
 				"name": "IdentityIssued",
@@ -523,11 +529,11 @@
 			]
 		},
 		"contracts/IdentityRegistry.sol": {
-			"keccak256": "0x1e73fd742ab42f8a2de0be43d561dfe1b94a68d71f350d48b7f8b44bc03cb1bc",
+			"keccak256": "0x2c533edb75b33e18074aae04ffe5cf03c31cf3f691cec41b82316ee899fefeef",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://44ade7636af76235758b28c3c22a660ecac6ae820c8f011e05fb1cb6b53c3755",
-				"dweb:/ipfs/QmPmVsNwkfThtWeEKtCxagGewasv51YDK5hi9FiQwi2Ej9"
+				"bzz-raw://5baa0721729c598fd7dbc67d92b4d65e65e5e260f699279e8f5305e9c2110955",
+				"dweb:/ipfs/QmPr1LhyLnuNMCfx5pFaZVr3iKB5jVwLwQaH3efj33XbC5"
 			]
 		}
 	},

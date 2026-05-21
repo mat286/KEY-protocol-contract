@@ -23,7 +23,7 @@ contract IdentityRegistry is Ownable, Pausable, ReentrancyGuard {
     struct IdentityCertificate {
         bytes32 identityCommitment;
         bytes32 biometricCommitment;
-        string cid; 
+        string cid;
         string encryptedAESKey;
         uint256 issuedAt;
         bool revoked;
@@ -43,7 +43,8 @@ contract IdentityRegistry is Ownable, Pausable, ReentrancyGuard {
     event IdentityIssued(
         uint256 indexed certId,
         bytes32 indexed identityCommitment,
-        uint256 issuedAt
+        uint256 issuedAt,
+        string mensaje
     );
 
     event IdentityRevoked(uint256 indexed certId, uint256 revokedAt);
@@ -95,21 +96,6 @@ contract IdentityRegistry is Ownable, Pausable, ReentrancyGuard {
     ) external whenNotPaused nonReentrant {
         require(identities[certId].issuedAt == 0, "Identity already exists");
 
-        // 🔐 hash canónico del CID cifrado
-        /* bytes32 encryptedCidHash = keccak256(encryptedCid); */
-
-        // 1️⃣ mensaje firmado por el TEE
-        /* bytes32 messageHash = keccak256(
-            abi.encode(
-                "ISSUE_IDENTITY",
-                certId,
-                identityCommitment,
-                biometricCommitment,
-                encryptedCidHash,
-                timestamp
-            )
-        ); */
-
         bytes32 messageHash = keccak256(
             abi.encode(
                 "ISSUE_IDENTITY",
@@ -144,7 +130,12 @@ contract IdentityRegistry is Ownable, Pausable, ReentrancyGuard {
             revoked: false
         });
 
-        emit IdentityIssued(certId, identityCommitment, block.timestamp);
+        emit IdentityIssued(
+            certId,
+            identityCommitment,
+            block.timestamp,
+            "Identidad creada"
+        );
     }
 
     /*//////////////////////////////////////////////////////////////
